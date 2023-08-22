@@ -10,7 +10,7 @@ const bodyParser = require("body-parser");
 const { MongoClient } = require("mongodb");
 // Replace the uri string with your connection string.
 const uri =
-  "INSERT YOUR MONGODB CONNECTION STRING HERE";
+  "mongodb+srv://2195265:zP03218122161@cluster0.nyfcyhi.mongodb.net/?retryWrites=true&w=majority";
 
 // parse application/json
 app.use(bodyParser.json());
@@ -39,7 +39,7 @@ app.post("/", (req, res) => {
     try {
       const database = client.db("mongodemo");
       const student = database.collection("student");
-      const result = await student.insertOne(req.params);
+      const result = await student.insertOne(req.body);
       console.log(result);
     } finally {
       // Ensures that the client will close when you finish/error
